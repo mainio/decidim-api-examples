@@ -1,0 +1,69 @@
+#!/usr/bin/env node
+
+const dotenv = require("dotenv");
+const fs = require("node:fs/promises");
+const path = require("path");
+const parseArgs = require("minimist");
+const esbuild = require("esbuild");
+
+dotenv.config();
+
+const args = parseArgs(process.argv.slice(2), { alias: { watch: "w" } });
+
+const htmlPlugin = {
+  name: "html",
+  setup(build) {
+    build.onResolve({ filter: /\.html$/ }, (args) => {
+      return { path: path.join(args.resolveDir, args.path), namespace: "html" };
+    });
+    build.onLoad({ filter: /.*/, namespace: "html" }, async (args) => {
+      const contents = await fs.readFile(args.path, "utf8");
+      return { contents, loader: "copy" };
+    });
+  }
+};
+
+const build = async () => {
+  const mode = process.env["NODE_ENV"] === "production" ? "prod" : "dev";
+  const contextArgs = {
+    logLevel: "info",
+    nodePaths: ["src"],
+    entryPoints: ["src/frontend/index.js", "src/frontend/static.js"],
+    assetNames: '[name]',
+    bundle: true,
+    minify: mode === "prod",
+    outdir: "dist",
+    loader: {
+      ".svg": "copy",
+      ".woff": "copy",
+      ".woff2": "copy",
+      ".ttf": "copy",
+      ".eot": "copy",
+    },
+    define: {
+      "env.API_URL": JSON.stringify(process.env["API_URL"]),
+      "env.JWT_AUD": JSON.stringify(process.env["OAUTH_CLIENT_ID"]),
+    },
+    plugins: [htmlPlugin]
+  };
+  const context = await esbuild.context(contextArgs);
+
+  if (args.watch) {
+    const terminate = async () => {
+      console.log("Disposing context...");
+      await context.dispose();
+
+      console.log("Done, bye bye!");
+      process.exit();
+    };
+    process.on("SIGINT", terminate);
+    process.on("SIGTERM", terminate);
+
+    await context.watch();
+  } else {
+    await context.rebuild();
+    await context.dispose();
+  }
+};
+
+build();

@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+const dotenv = require("dotenv");
+const path = require("path");
+
+dotenv.config();
+
+const PORT = 8080;
+
+module.paths.unshift(path.join(__dirname, ".."));
+
+const server = require("src/backend/server.js");
+server.listen(PORT);
+
+console.log(`Server running at http://localhost:${PORT}`);

@@ -1,0 +1,94 @@
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./font/OpenSans-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: italic;
+  font-weight: 400;
+  src: url("./font/OpenSans-Italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./font/OpenSans-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./font/OpenSans-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: italic;
+  font-weight: 700;
+  src: url("./font/OpenSans-BoldItalic.woff2") format("woff2");
+}
+
+:root {
+  --button-color: #005797;
+  --button-text-color: #fff;
+  --button-hover-color: #024488;
+  --button-focus-color: #00158f;
+}
+
+html, body {
+  margin: 0;
+}
+
+body {
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+}
+
+h1, .h1 {
+  font-size: 2rem;
+}
+
+h2, .h2 {
+  font-size: 1.5rem;
+}
+
+#app {
+  margin: 30px;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1140px;
+}
+
+.divider {
+  margin: 30px;
+  background: #000;
+  height: 1px;
+}
+
+.content {
+  padding: 0 30px;
+}
+
+.btn {
+  border: 2px solid var(--button-color);
+  background: var(--button-color);
+  color: var(--button-text-color);
+  padding: 15px 25px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: var(--button-hover-color);
+}
+
+.btn:focus, .btn:active {
+  background-color: var(--button-focus-color);
+}

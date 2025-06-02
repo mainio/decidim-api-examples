@@ -1,0 +1,21 @@
+{
+  "name": "decidim-participant-token",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Example application for Decidim participant integrations.",
+  "scripts": {
+    "build": "./bin/build-frontend",
+    "build:watch": "./bin/build-frontend --watch",
+    "dev:serve": "./bin/dev-server",
+    "dev": "concurrently \"npm run build:watch\" \"npm run dev:serve\""
+  },
+  "author": "Antti Hukkanen",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "dotenv": "^16.4.7",
+    "esbuild": "^0.25.2",
+    "mime-types": "^3.0.1",
+    "minimist": "^1.2.8"
+  }
+}

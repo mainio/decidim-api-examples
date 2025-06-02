@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="350mm" height="270mm" version="1.1" viewBox="0 0 350 270" xmlns="http://www.w3.org/2000/svg">
+ <circle r="1e5" fill="white"/>
+ <g font-family="sans-serif" letter-spacing="0px" stroke-width=".26458" word-spacing="0px">
+  <text x="122.00549" y="21.327585" fill="#000000" font-size="10.583px" style="line-height:1.25" xml:space="preserve"><tspan x="122.00549" y="21.327585" stroke-width=".26458">Confidential client</tspan></text>
+  <text x="249.6626" y="41.854092" fill="#0000c8" font-size="6.8792px" text-anchor="middle" style="line-height:1.25" xml:space="preserve"><tspan x="249.6626" y="41.854092" text-align="center">OAuth flow</tspan><tspan x="249.6626" y="50.453053" text-align="center">happens here</tspan></text>
+  <g>
+   <text x="166.94041" y="47.823414" font-size="6.8792px" text-anchor="middle" style="line-height:1.25" xml:space="preserve"><tspan x="166.94041" y="47.823414" text-align="center">Server</tspan><tspan x="166.94041" y="56.422375" text-align="center">(OAuth client)</tspan></text>
+   <text x="168.93715" y="113.256" font-size="3.7042px" style="line-height:1.25" xml:space="preserve"><tspan x="168.93715" y="113.256" font-size="3.7042px" stroke-width=".26458" text-align="center" text-anchor="middle">(<tspan font-weight="bold">can</tspan> store secret information because <tspan font-weight="bold">it is not</tspan> in the user's pocket)</tspan></text>
+   <text x="106.02949" y="258.14767" font-size="3.7042px" style="line-height:1.25" xml:space="preserve"><tspan x="106.02949" y="258.14767" font-size="3.7042px" stroke-width=".26458" text-align="center" text-anchor="middle">(<tspan font-weight="bold">cannot</tspan> store secret information because <tspan font-weight="bold">it is</tspan> in the user's pocket)</tspan></text>
+   <text x="142.73076" y="162.68893" font-size="10.583px" style="line-height:1.25" xml:space="preserve"><tspan x="142.73076" y="162.68893" stroke-width=".26458">Public client</tspan></text>
+  </g>
+ </g>
+ <path d="m158.17 72.64h16.938v-7.2591h-16.938zm19.358-8.469v19.358c0 0.66819-0.54168 1.2098-1.2099 1.2098h-19.358c-0.66815 0-1.2098-0.54165-1.2098-1.2098v-19.358c0-0.66818 0.54168-1.2098 1.2098-1.2098h19.358c0.6682 0 1.2099 0.54167 1.2099 1.2098zm-2.4197 10.889h-16.938v7.2591h16.938zm-14.518 2.4197h3.6296v2.4197h-3.6296zm0-9.6788h3.6296v2.4197h-3.6296z" stroke-width="1.2098"/>
+ <rect x="118.11" y="31.238" width="102.3" height="75.578" fill="none" stroke="#000" stroke-width="2.354"/>
+ <g transform="translate(59.305 -2.3094)">
+  <text x="231.75903" y="75.143532" fill="#000000" font-family="sans-serif" font-size="10.583px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="231.75903" y="75.143532" stroke-width=".26458">Decidim</tspan></text>
+  <rect x="222.51" y="54.966" width="62.1" height="32.396" fill="none" stroke="#000" stroke-width="2.354"/>
+ </g>
+ <g transform="translate(41.047 -2.5723)">
+  <text x="-2.9739537" y="102.31375" fill="#000000" font-family="sans-serif" font-size="6.8792px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="-2.973954" y="102.31375" font-size="6.8792px" stroke-width=".26458" text-align="center" text-anchor="middle">End user</tspan></text>
+  <path d="m-12.369 75.18h21.308v-14.649h-21.308zm11.986 2.6635v2.6635h5.327v2.6635h-13.317v-2.6635h5.327v-2.6635h-10.665c-0.72947 0-1.3208-0.59787-1.3208-1.3418v-17.293c0-0.74102 0.60636-1.3417 1.3208-1.3417h23.993c0.72953 0 1.3208 0.59781 1.3208 1.3417v17.293c0 0.74097-0.60635 1.3418-1.3208 1.3418z" stroke-width="1.3318"/>
+  <path d="m-32.55 91.223c0-4.6186 3.7441-8.3626 8.3627-8.3626s8.3627 3.7441 8.3627 8.3626h-2.0907c0-3.4639-2.8081-6.272-6.272-6.272s-6.272 2.8081-6.272 6.272zm8.3627-9.408c-3.4653 0-6.272-2.8067-6.272-6.272s2.8067-6.272 6.272-6.272 6.272 2.8067 6.272 6.272-2.8067 6.272-6.272 6.272zm0-2.0906c2.3102 0 4.1813-1.8712 4.1813-4.1814s-1.8711-4.1813-4.1813-4.1813-4.1813 1.8712-4.1813 4.1813c0 2.3102 1.8711 4.1814 4.1813 4.1814z" stroke-width="1.0453"/>
+ </g>
+ <g transform="translate(61.102 -11.1)">
+  <path d="m-3.2612 62.67 53.826 0.13229" fill="none" stroke="#000" stroke-width="1.5"/>
+  <path transform="matrix(0 .11875 -.11875 0 57.853 81.061)" d="m-123.92 67.092h-57.749l28.875-50.012z"/>
+ </g>
+ <g transform="translate(61.102 13.905)">
+  <path d="m2.3754 75.396 53.721 0.13229" fill="none" stroke="#000" stroke-width="1.5"/>
+  <path transform="matrix(0 .11875 .11875 0 -5.2873 93.412)" d="m-123.92 67.092h-57.749l28.875-50.012z"/>
+ </g>
+ <g transform="translate(224.88 -.028098)">
+  <path d="m-3.2612 62.67 53.826 0.13229" fill="none" stroke="#000" stroke-width="1.5"/>
+  <path transform="matrix(0 .11875 -.11875 0 57.853 81.061)" d="m-123.92 67.092h-57.749l28.875-50.012z"/>
+  <path d="m2.3754 75.396 53.721 0.13229" fill="none" stroke="#000" stroke-width="1.5"/>
+  <path transform="matrix(0 .11875 .11875 0 -5.2873 93.412)" d="m-123.92 67.092h-57.749l28.875-50.012z"/>
+ </g>
+ <text x="188.88394" y="186.62294" fill="#0000c8" font-family="sans-serif" font-size="6.8792px" letter-spacing="0px" stroke-width=".26458" text-anchor="middle" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="188.88394" y="186.62294" text-align="center">OAuth flow</tspan><tspan x="188.88394" y="195.22191" text-align="center">happens here</tspan></text>
+ <text x="105.59792" y="189.00256" fill="#000000" font-family="sans-serif" font-size="6.8792px" letter-spacing="0px" stroke-width=".26458" text-anchor="middle" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="105.59792" y="189.00256" text-align="center">Mobile phone</tspan><tspan x="105.59792" y="197.60153" text-align="center">(OAuth client)</tspan></text>
+ <rect x="54.688" y="176.01" width="102.3" height="75.578" fill="none" stroke="#000" stroke-width="2.354"/>
+ <g transform="translate(-4.1195 142.46)">
+  <text x="231.75903" y="75.143532" fill="#000000" font-family="sans-serif" font-size="10.583px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="231.75903" y="75.143532" stroke-width=".26458">Decidim</tspan></text>
+  <rect x="222.51" y="54.966" width="62.1" height="32.396" fill="none" stroke="#000" stroke-width="2.354"/>
+ </g>
+ <g transform="translate(161.45 144.74)">
+  <path d="m-3.2612 62.67 53.826 0.13229" fill="none" stroke="#000" stroke-width="1.5"/>
+  <path transform="matrix(0 .11875 -.11875 0 57.853 81.061)" d="m-123.92 67.092h-57.749l28.875-50.012z"/>
+  <path d="m2.3754 75.396 53.721 0.13229" fill="none" stroke="#000" stroke-width="1.5"/>
+  <path transform="matrix(0 .11875 .11875 0 -5.2873 93.412)" d="m-123.92 67.092h-57.749l28.875-50.012z"/>
+ </g>
+ <path d="m98.892 207.97v21.686h13.554v-21.686zm-1.3554-2.7108h16.264c0.74858 0 1.3554 0.60683 1.3554 1.3554v24.397c0 0.74857-0.60678 1.3554-1.3554 1.3554h-16.264c-0.74858 0-1.3554-0.60684-1.3554-1.3554v-24.397c0-0.74853 0.60684-1.3554 1.3554-1.3554zm8.1322 20.331c0.74858 0 1.3554 0.60678 1.3554 1.3554 0 0.74858-0.60678 1.3554-1.3554 1.3554-0.74857 0-1.3554-0.60684-1.3554-1.3554 0-0.74857 0.60683-1.3554 1.3554-1.3554z" stroke-width=".26458"/>
+ <text x="103.54892" y="244.99304" fill="#000000" font-family="sans-serif" font-size="6.8792px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="103.54892" y="244.99304" font-size="6.8792px" stroke-width=".26458" text-align="center" text-anchor="middle">End user</tspan></text>
+ <path d="m75.152 234.29c0-4.6186 3.7441-8.3626 8.3627-8.3626s8.3627 3.7441 8.3627 8.3626h-2.0907c0-3.4639-2.8081-6.272-6.272-6.272s-6.272 2.8081-6.272 6.272zm8.3627-9.408c-3.4653 0-6.272-2.8067-6.272-6.272s2.8067-6.272 6.272-6.272 6.272 2.8067 6.272 6.272-2.8067 6.272-6.272 6.272zm0-2.0906c2.3102 0 4.1813-1.8712 4.1813-4.1814s-1.8712-4.1813-4.1813-4.1813c-2.3102 0-4.1813 1.8712-4.1813 4.1813 0 2.3102 1.8712 4.1814 4.1813 4.1814z" stroke-width="1.0453"/>
+ <rect x="214.88" y="28.353" width="71.184" height="56.382" fill="none" stroke="#0000c8" stroke-dasharray="1.5, 1.5" stroke-width="1.5"/>
+ <rect x="153.18" y="175.56" width="69.824" height="56.382" fill="none" stroke="#0000c8" stroke-dasharray="1.5, 1.5" stroke-width="1.5"/>
+</svg>
