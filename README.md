@@ -1,5 +1,11 @@
 # Decidim API examples for 3rd party applications
 
+> [!NOTE]
+> These examples depend on
+> [Decidim PR #14225](https://github.com/decidim/decidim/pull/14225). Once this
+> PR is merged and a new version is released, these examples will work with a
+> normal Decidim installation.
+
 This repository contains examples of 3rd party applications for interacting with
 the Decidim API and the OAuth authentication flows in order to use the Decidim
 API as a signed in user. There is also an example of a machine-to-machine
