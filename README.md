@@ -1,8 +1,9 @@
-# Decidim API examples for 3rd party participant applications
+# Decidim API examples for 3rd party applications
 
-This repository contains examples of 3rd party participant applications for
-interacting with the Decidim API and the OAuth authentication flows in order to
-use the Decidim API as a signed in user.
+This repository contains examples of 3rd party applications for interacting with
+the Decidim API and the OAuth authentication flows in order to use the Decidim
+API as a signed in user. There is also an example of a machine-to-machine
+integration that signs in to the API utilizing authorized API credentials.
 
 The purpose of these examples is to show how to implement the OAuth
 authentication flows and how these flows work in code. Another purpose for these
@@ -95,6 +96,25 @@ user's pocket. This means that technically savvy users are able to access this
 information in case they reverse engineer the software they have the code for,
 even when it is in compiled format.
 
+### Machine-to-machine applications
+
+Machine-to-machine applications are always "confidential" and assumed to have
+elevated admin-level permissions within Decidim. These types of applications do
+not use OAuth for signing in or authorizing the application, as the
+authorization is done by the Decidim system administrator when creating the API
+user at the "API Credentials" section of the Decidim `/system` panel.
+
+The machine-to-machine users will always authenticate with the API using the
+dedicated API authentication endpoints in Decidim. The API credentials for the
+authentication are available and assigned from the Decidim `/system` panel.
+
+With machine-to-machine integrations, there should not be any end user
+interacting with the Decidim API. In these applications, the API interactions
+should be always done with a computer through some kind of automation and the
+machine always represents itself when interacting with the API. Therefore, there
+is no actual Decidim end user interacting with the API in these types of
+applications.
+
 ### OAuth authentication flow
 
 The authentication flow works as follows for external applications:
@@ -152,7 +172,7 @@ assume it is public and use PKCE without the client secret. When setting up the
 OAuth application at Decidim, you also need to define whether the application is
 confidential or public.
 
-### Calling the API
+### Calling the API with OAuth token (participant integration)
 
 The API key returned to from the OAuth `/token` endpoint is in the JSON Web
 Token (JWT) format in case the API scopes were requested during the OAuth
@@ -206,6 +226,66 @@ In case the access token works correctly, you should receive a response with
 details about the session for the logged in user. In case the token is invalid,
 you will receive a `null` response within the `session` field of the response.
 
+### Calling the API with machine-to-machine token (machine-to-machine integration)
+
+The flow with machine-to-machine integrations works as follows:
+
+- A machine signs in to the API utilizing their API credentials by calling the
+  `/api/sign_in` endpoint
+- The machine performs the API requests they need to perform during the
+  automation run
+- The machine signs out of the API by calling the `/api/sign_out` endpoint
+
+The HTTP request for signing in looks as follows:
+
+```
+POST /api/sign_in HTTP/1.1
+Accept: application/json
+User-Agent: Dummy API Client
+Host: localhost:3000
+Content-Type: application/json
+Connection: close
+Content-Length: 99
+
+{"api_user":{"key":"MACHINE_USER_KEY","secret":"MACHINE_USER_SECRET"}}
+```
+
+A token is returned from the response in the HTTP `Authorization` header as well
+as in the JSON body of the response, within the value of `jwt_token`. The
+`Authorization` header also contains the token type (`Bearer`) but when
+utilizing the `jwt_token` value of the response, the token sent in the following
+requests must be prefixed with the token type (`Bearer`).
+
+The call to the `/api` endpoint is done with this token with a HTTP requests
+that looks as follows:
+
+```
+POST /api HTTP/1.1
+Accept: application/json
+Authorization: Bearer abcdef
+User-Agent: Dummy API Client
+Host: localhost:3000
+Content-Length: 53
+Content-Type: application/json
+
+{"query":"{ session { user { id name nickname } } }"}
+```
+
+Also note that with machine-to-machine integrations, the requests do not need
+the `X-Jwt-Aud` header because the user is not authorized through an OAuth
+client.
+
+Finally, once the API interaction is done, the machine signs out from the API
+with the following type of HTTP request:
+
+```
+DELETE /api/sign_out HTTP/1.1
+Accept: */*
+Authorization: Bearer abcdef
+User-Agent: Dummy API Client
+Host: localhost:3000
+```
+
 ## Example applications
 
 This repository provides two separate example projects for demonstrating how the
@@ -215,6 +295,8 @@ OAuth flow can be implemented for different types of applications:
   example of a public OAuth client implementation.
 - [Node.js web application](./examples/web-nodejs/) serving as an example of a
   confidential OAuth client implementation.
+- [Ruby machine-to-machine application](./examples/machine-ruby/) serving as an
+  example of a machine-to-machine integration.
 
 For web a web developer, the easier example is obviously the Node.js example
 which is a traditional web application written mostly in JavaScript. It is super

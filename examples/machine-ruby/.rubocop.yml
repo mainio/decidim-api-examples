@@ -1,0 +1,13 @@
+require:
+  - standard
+
+inherit_gem:
+  standard: config/base.yml
+
+AllCops:
+  NewCops: enable
+
+# Project specific rules
+
+Style/FrozenStringLiteralComment:
+  Enabled: true

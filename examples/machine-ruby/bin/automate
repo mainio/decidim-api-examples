@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+lib_path = File.expand_path("#{__dir__}/../lib")
+$LOAD_PATH.unshift(lib_path)
+
+require "dotenv/load"
+require "logger"
+require "api_client"
+
+logger = Logger.new($stdout)
+logger.level = Logger::INFO
+
+client = ApiClient.new(
+  url: ENV.fetch("API_URL"),
+  key: ENV.fetch("API_KEY"),
+  secret: ENV.fetch("API_SECRET")
+)
+
+logger.info("Signing in to the API...")
+client.sign_in
+
+logger.info("Fetching user details...")
+user = client.user_details
+
+puts "----"
+puts "User name: #{user[:name]}"
+puts "User nickname: #{user[:nickname]}"
+puts "Profile link: (machine users do not have a user profile)"
+puts "----"
+
+logger.info("Signing out from the API...")
+client.sign_out

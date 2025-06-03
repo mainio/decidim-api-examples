@@ -1,4 +1,4 @@
-# Example application for participant-facing Decidim API integrations
+# Decidim Participant Token for web
 
 This is an example traditional web application showing a **confidential** OAuth
 client interacting with the Decidim API as an authenticated participant. It is a
