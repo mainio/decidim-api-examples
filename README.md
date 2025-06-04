@@ -141,11 +141,11 @@ The authentication flow works as follows for external applications:
   further calls to Decidim as a signed in user.
 
 With confidential applications or "OAuth clients", the authorization step is
-skipped in case there is already a valid token for the same resource owner, i.e.
-the authenticating user. The same valid token will be returned without the
-authorization in case the user has already authorized the application and the
-token is still valid. Public clients will always require the user to
-re-authorize the application to perform actions on their behalf.
+skipped in case the application is already authorized for the same resource
+owner, i.e. the authenticating user. A valid token will be returned without the
+user having to perform the authorization step. Public clients will always
+require the user to re-authorize the application to perform actions on their
+behalf.
 
 ### Proof Key for Code Exchange (PKCE, pronounced "pixy")
 
