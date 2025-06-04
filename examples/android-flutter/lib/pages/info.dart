@@ -70,7 +70,7 @@ class _InfoPageState extends State<InfoPage> {
                         style: linkStyle,
                         recognizer: TapGestureRecognizer()
                           ..onTap = () =>{
-                            _openProfile((user['nickname'] as String).substring(1)),
+                            _openProfile(user['profilePath'] as String),
                           }
                       ),
                     ),
@@ -118,7 +118,7 @@ class _InfoPageState extends State<InfoPage> {
 
   Future<Map<String, dynamic>> _fetchData() async {
     AppState appState = Provider.of<AppState>(context, listen: false);
-    String query = '{ session { user { id name nickname } } }';
+    String query = '{ session { user { id name nickname profilePath } } }';
     final data = await apiRequest(appState.token!, query);
 
     return {
@@ -147,9 +147,9 @@ class _InfoPageState extends State<InfoPage> {
     return capabilities;
   }
 
-  void _openProfile(String username) {
+  void _openProfile(String profilePath) {
     Uri uri = Uri.parse(const String.fromEnvironment('API_URL')).replace(
-      path: '/profiles/${username}'
+      path: profilePath
     );
 
     platform.invokeMethod('launchUrl', uri.toString());

@@ -107,7 +107,7 @@ const initApp = async () => {
     const token = getToken();
 
     if (token) {
-      const data = await apiRequest(token, "{ session { user { id name nickname } } }")
+      const data = await apiRequest(token, "{ session { user { id name nickname profilePath } } }")
       if (data && data.session) {
         appContainer.innerHTML = templates.signedIn(data.session.user, token);
       } else {

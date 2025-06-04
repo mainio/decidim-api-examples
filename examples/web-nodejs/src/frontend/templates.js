@@ -68,9 +68,8 @@ export const index = `
 `;
 
 export const signedIn = (user, token) => {
-  const username = (user.nickname || "").substring(1);
   const baseUrl = API_URL.substring(0, API_URL.indexOf("/api"));
-  const profileUrl = `${baseUrl}/profiles/${username}`;
+  const profileUrl = `${baseUrl}${user.profilePath}`;
   const scopes = token.scope.split(" ");
 
   const capabilities = [];
