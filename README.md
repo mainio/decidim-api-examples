@@ -347,8 +347,8 @@ revoked and the user is no longer signed in with that token.
 
 ## Example applications
 
-This repository provides two separate example projects for demonstrating how the
-OAuth flow can be implemented for different types of applications:
+This repository provides three separate example projects for demonstrating how
+the authentication flow can be implemented for different types of applications:
 
 - [Native Android application](./examples/android-flutter/) serving as an
   example of a public OAuth client implementation.
