@@ -48,6 +48,11 @@ participants. Such applications could include, for example, automations that
 need to update data in Decidim automatically based on content available in an
 external system.
 
+Before integrating, you need to configure Decidim correctly for the API tokens
+to work. Please add the `DECIDIM_API_JWT_SECRET` variable to the application's
+environment variables to define a secret for signing the JWTs. You can generate
+such secret by running `bundle exec rails secret` within your application.
+
 ### Never ask users to provide their credentials to external systems
 
 Users' personal credentials (e.g. their email and password) should never leave
@@ -92,7 +97,7 @@ strategy for handling the authentication flow.
 The following image shows the differences between these two types of
 applications or "OAuth clients":
 
-![OAuh client types](./docs/oauth-flows-opt.svg)
+![OAuth client types](./docs/oauth-flows-opt.svg)
 
 The main difference is that public clients cannot store any confidential
 information (e.g. client secret) because the user can access this information.
@@ -112,7 +117,10 @@ user at the "API Credentials" section of the Decidim `/system` panel.
 
 The machine-to-machine users will always authenticate with the API using the
 dedicated API authentication endpoints in Decidim. The API credentials for the
-authentication are available and assigned from the Decidim `/system` panel.
+authentication are available and assigned from the Decidim `/system` panel. The
+whole flow for signing in is shown in the following illustration:
+
+![OAuth client types](./docs/machine-flow.svg)
 
 With machine-to-machine integrations, there should not be any end user
 interacting with the Decidim API. In these applications, the API interactions
@@ -249,11 +257,34 @@ POST /api/sign_in HTTP/1.1
 Accept: application/json
 User-Agent: Dummy API Client
 Host: localhost:3000
+Content-Type: application/x-www-form-urlencoded
+Connection: close
+Content-Length: 71
+
+api_user[key]=MACHINE_USER_KEY&api_user[secret]=MACHINE_USER_SECRET
+```
+
+Or as follows when using `application/json` as the response body content type:
+
+```
+POST /api/sign_in HTTP/1.1
+Accept: application/json
+User-Agent: Dummy API Client
+Host: localhost:3000
 Content-Type: application/json
 Connection: close
 Content-Length: 99
 
 {"api_user":{"key":"MACHINE_USER_KEY","secret":"MACHINE_USER_SECRET"}}
+```
+
+You can use the following `curl` command to test it out:
+
+```bash
+$ curl -s -i -H "Content-type: application/x-www-form-urlencoded" \
+  -d "api_user[key]=MACHINE_USER_KEY" \
+  -d "api_user[secret]=MACHINE_USER_SECRET" \
+  -X POST http://localhost:3000/api/sign_in | grep 'Authorization' | cut -d ' ' -f2-
 ```
 
 A token is returned from the response in the HTTP `Authorization` header as well
@@ -277,6 +308,16 @@ Content-Type: application/json
 {"query":"{ session { user { id name nickname } } }"}
 ```
 
+Using the authorization header received from the previous command, you can use
+the following `curl` command to test it out with the API:
+
+```bash
+$ curl -w "\n" -H "Content-Type: application/json" \
+  -H "Authorization: Bearer PASTE_THE_TOKEN_HERE" \
+  -d '{"query":"{ session { user { id name nickname } } }"}' \
+  -X POST http://localhost:3000/api
+```
+
 Also note that with machine-to-machine integrations, the requests do not need
 the `X-Jwt-Aud` header because the user is not authorized through an OAuth
 client.
@@ -291,6 +332,18 @@ Authorization: Bearer abcdef
 User-Agent: Dummy API Client
 Host: localhost:3000
 ```
+
+Using the same authorization header received from the first command, you can use
+the following `curl` command to test it out with the API:
+
+```bash
+$ curl -s -o /dev/null -w "HTTP %{http_code}\n" \
+  -H "Authorization: Bearer PASTE_THE_TOKEN_HERE" \
+  -X DELETE http://localhost:3000/api/sign_out
+```
+
+After done, you can retry the API query command to confirm that the token is
+revoked and the user is no longer signed in with that token.
 
 ## Example applications
 
