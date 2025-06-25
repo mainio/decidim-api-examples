@@ -1,4 +1,4 @@
-# Decidim Participant Token for web
+# Decidim Participant Token for web (Node.js)
 
 This is an example traditional web application showing a **confidential** OAuth
 client interacting with the Decidim API as an authenticated participant. It is a
