@@ -375,3 +375,25 @@ authentication is designed to work. You should invest time into learning how to
 implement the authentication for your application and you should always rely on
 ready-made software libraries for the authentication flows. These examples are
 for educational purposes only.
+
+The documentation and illustrations included in the documentation within this
+repository, unless otherwise specified, are licensed under
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en) by
+[Mainio Tech Oy](https://www.mainiotech.fi/).
+
+Icons used in the illustrations are by [Remix Icon](https://remixicon.com/)
+licensed under Apache License 2.0.
+
+Any trademarks, logos, or other assets presented in the documentation images or
+the code examples belong to their rightful owners, do not fall under this
+license, and are used on fair use. This includes any possible assets included in
+the code examples or their compiled forms, such as images, icons, font glyphs,
+or other assets alike.
+
+Attribution example for derivative works of this documentation or its
+illustrations:
+
+> *This work is a derivative of "[Decidim API examples for 3rd party
+> applications](https://github.com/mainio/decidim-api-examples)"
+> by [Mainio Tech Oy](https://www.mainiotech.fi/), used under
+> [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en).*
